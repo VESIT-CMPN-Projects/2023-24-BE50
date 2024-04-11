@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autism Research Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: rgba(245, 245, 245, 0); /* Fully transparent background */
+      margin: 0;
+      padding: 0;
+      background-image: url('autismsoe.jpg');
+      background-size: contain; /* Adjusted background size */
+      background-repeat: no-repeat; /* Prevent background image from repeating */
+      background-position: center center; /* Center the background image */
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+    main {
+      padding: 20px;
+    }
+    .form-section {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      font-weight: bold;
+    }
+    select, input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #results {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    footer {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+    footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Autism Research Project</h1>
+  </header>
+  <main>
+    <section class="form-section">
+      <h2>ASD Detection</h2>
+      <p>Enter the scores (A1-A10), age, gender, and model information to analyze.</p>
+      <form id="dataForm" onsubmit="analyze(); return false;">
+        <ul>
+          <li>
+            <label for="A1">Did you face any prenatal exposure to industry chemicals, pesticides, or suffer through direct contact of air pollution?:</label>
+            <select name="A1" required>
+              <option value="">--select--</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </li>
+          <li>
+            <label for="A2">Did you or your parent face problems such as obesity, diabetes, or immune system disorder?:</label>
+            <select name="A2" required>
+              <option value="">--select--</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </li>
+          <li>
+            <label for="A3">Do you have any existing genetic hereditary conditions?:</label>
+            <select name="A3" required>
+              <option value="">--select--</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </li>
+          <li>
+            <label for="A4">Were your parents elderly when you were born?:</label>
+            <select name="A4" required>
+              <option value="">--select--</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </li>
+          <li>
+            <label for="A5">Did you have a very low birth weight?:</label>
+            <select name="A5" required>
+              <option value="">--select--</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </li>
+          <li>
+            <label for="A6">Did your mother suffer from any chronic or pulmonary disease during conception?:</label>
+            <select name="A6" required>
+              <option value="">--select--</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </li>
+          <li>
+            <label for="A7">Do you experience any behavioral changes?:</label>
+            <select name="A7" required>
+              <option value="">--select--</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </li>
+          <li>
+            <label for="A8">Did your mother suffer from any birth difficulties such as oxygen deprivation during conception?:</label>
+            <select name="A8" required>
+              <option value="">--select--</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </li>
+          <li>
+            <label for="A9">Was your birth premature?:</label>
+            <select name="A9" required>
+              <option value="">--select--</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </li>
+          <li>
+            <label for="A10">Do you face any verbal or nonverbal communication difficulties?:</label>
+            <select name="A10" required>
+              <option value="">--select--</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </li>
+          <li>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+          </li>
+          <li>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+              <option value="">--select--</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </li>
+          <li>
+            <label for="model">Model:</label>
+            <select id="model" name="model" required>
+              <option value="">--select Model--</option>
+              <option value="knn">KNN</option>
+              <option value="rf">Random Forest</option>
+              <option value="dt">Decision Tree</option>
+              <option value="logistic">Logistic Regression</option>
+            </select>
+          </li>
+        </ul>
+        <button type="submit">Analyze</button>
+      </form>
+      <div id="results"></div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Autism Research Project. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function analyze() {
+      var gender = document.getElementById('gender').value;
+      var A1 = parseInt(document.getElementsByName('A1')[0].value);
+      var A2 = parseInt(document.getElementsByName('A2')[0].value);
+      var A3 = parseInt(document.getElementsByName('A3')[0].value);
+      var A4 = parseInt(document.getElementsByName('A4')[0].value);
+      var A5 = parseInt(document.getElementsByName('A5')[0].value);
+      var A6 = parseInt(document.getElementsByName('A6')[0].value);
+      var A7 = parseInt(document.getElementsByName('A7')[0].value);
+      var A8 = parseInt(document.getElementsByName('A8')[0].value);
+      var A9 = parseInt(document.getElementsByName('A9')[0].value);
+      var A10 = parseInt(document.getElementsByName('A10')[0].value);
+      var age = parseInt(document.getElementById('age').value);
+      
+      var score = A1 + A2 + A3 + A4 + A5 + A6 + A7 + A8 + A9 + A10;
+      var result = '';
+
+      if (score <= 3) {
+        result = 'No Autism detected.';
+      } else if (score <= 6) {
+        result = 'Slight chances of Autism.';
+      } else if (score <= 11) {
+        result = 'Autism chances high.';
+      }
+
+      document.getElementById('results').innerHTML = '<p>' + result + '</p>';
+    }
+  </script>
+</body>
+</html>
